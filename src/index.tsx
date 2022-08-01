@@ -14,7 +14,10 @@ import { makeServer } from "./server";
 const container = document.getElementById("root")!;
 const root = createRoot(container);
 
-if (process.env.NODE_ENV === "development") {
+if (
+  process.env.NODE_ENV === "development" ||
+  process.env.NODE_ENV === "production"
+) {
   makeServer({ environment: "development" });
 }
 
