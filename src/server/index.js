@@ -49,6 +49,13 @@ export function makeServer({ environment = "test" } = {}) {
 
       this.post("/api/register", (schema, request) => {
         const { username, password } = JSON.parse(request.requestBody);
+        const user = schema.users.create({
+          username,
+          password,
+        });
+
+        console.log("created user", user);
+
         return schema.users.create({
           username,
           password,

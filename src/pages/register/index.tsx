@@ -8,7 +8,7 @@ import AppPaper from "../../common/Paper";
 import FormInput from "../../common/FormElements/input";
 import AppButton from "../../common/Button";
 import { Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { registerUser } from "../../services/auth";
 
 interface RegisterProps {
@@ -32,6 +32,8 @@ const initialValues: RegisterProps = {
 };
 
 const RegisterPage: React.FC = () => {
+  const navigate = useNavigate();
+
   const {
     handleSubmit,
     control,
@@ -50,6 +52,7 @@ const RegisterPage: React.FC = () => {
         password: data.password,
       });
       console.log(res);
+      navigate("/login");
     } catch (error) {
       console.log(error);
     }
